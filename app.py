@@ -25,7 +25,7 @@ st.set_page_config(
 
 HEADERS = {"User-Agent": "Mozilla/5.0 (compatible; RetailPulseComplianceBot/1.0; +https://aovalle.com)"}
 TIMEOUT = 12
-CALENDLY_URL = "https://calendly.com/TU-USUARIO/auditoria-ley-21719"  # reemplaza con tu link real
+CALENDLY_URL = "https://calendly.com/alejandro-ovalle/30min"  # reemplaza con tu link real
 
 COLOR_BRAND = "#B24958"       # burdeo/crimson de marca (logo AOVALLE.COM, CTA)
 COLOR_BRAND_DARK = "#8F3A46"  # variante mas oscura para hover/acentos

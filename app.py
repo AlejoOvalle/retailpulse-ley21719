@@ -263,7 +263,7 @@ days, months = days_to_deadline()
 st.markdown(f"""
 <div style="text-align:center; padding: 10px 0 24px 0;">
   <p style="color:{COLOR_BRAND}; font-weight:600; letter-spacing:1px; font-size:13px; text-transform:uppercase;">
-    <img src="https://retailpulse.cl/assets/img/logo-retailpulse.png" width="50%">
+    <img src="https://retailpulse.cl/assets/img/logo-retailpulse.png" width="30%">
   </p>
   <h1 style="color:{COLOR_TEXT}; font-size:32px; margin-bottom:6px;">
     Escáner de Privacidad y Tracking Técnico<br/><span style="color:{COLOR_BRAND};">Ley 21.719</span>

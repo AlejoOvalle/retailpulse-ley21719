@@ -27,8 +27,13 @@ HEADERS = {"User-Agent": "Mozilla/5.0 (compatible; RetailPulseComplianceBot/1.0;
 TIMEOUT = 12
 CALENDLY_URL = "https://calendly.com/TU-USUARIO/auditoria-ley-21719"  # reemplaza con tu link real
 
-COLOR_TEAL = "#1F4E5B"
-COLOR_TEAL_DEEP = "#0E262D"
+COLOR_BRAND = "#B24958"       # burdeo/crimson de marca (logo AOVALLE.COM, CTA)
+COLOR_BRAND_DARK = "#8F3A46"  # variante mas oscura para hover/acentos
+COLOR_BG = "#FFFFFF"
+COLOR_CARD = "#F2F2F2"
+COLOR_BORDER = "#CCCCCC"
+COLOR_TEXT = "#262626"
+COLOR_MUTED = "#8A8A8A"
 COLOR_AMBER = "#C97A2B"
 COLOR_RED = "#B4432E"
 COLOR_GREEN = "#3F7A5C"
@@ -90,16 +95,16 @@ PRIORIDAD = {
 # ---------------------------------------------------------------------------
 st.markdown(f"""
 <style>
-    .stApp {{ background-color: {COLOR_TEAL_DEEP}; }}
-    h1, h2, h3 {{ font-family: Georgia, 'Times New Roman', serif; }}
+    .stApp {{ background-color: {COLOR_BG}; }}
+    h1, h2, h3 {{ font-family: Georgia, 'Times New Roman', serif; color: {COLOR_TEXT}; }}
     .badge {{
         display: inline-flex; align-items: center; gap: 6px;
         font-size: 12px; font-weight: 600; padding: 4px 10px;
         border-radius: 999px;
     }}
     .rp-card {{
-        background-color: #101A1D; border-radius: 16px; padding: 24px;
-        color: #F4F6F5; margin-bottom: 16px;
+        background-color: {COLOR_CARD}; border: 1px solid {COLOR_BORDER}; border-radius: 16px; padding: 24px;
+        color: {COLOR_TEXT}; margin-bottom: 16px;
     }}
     .rp-urgency {{
         background-color: #F7ECDD; border: 1px solid #EBD5AE; border-radius: 12px;
@@ -110,8 +115,14 @@ st.markdown(f"""
         padding: 12px 18px; color: #3D4C48; font-size: 13.5px; margin-bottom: 16px;
     }}
     .rp-cta {{
-        background-color: {COLOR_TEAL}; border-radius: 16px; padding: 26px;
-        color: #F4F6F5;
+        background-color: {COLOR_BRAND}; border-radius: 16px; padding: 26px;
+        color: #FFFFFF;
+    }}
+    div.stButton > button[kind="primary"], .stLinkButton > a {{
+        background-color: {COLOR_BRAND} !important; border-color: {COLOR_BRAND} !important;
+    }}
+    div.stButton > button[kind="primary"]:hover, .stLinkButton > a:hover {{
+        background-color: {COLOR_BRAND_DARK} !important; border-color: {COLOR_BRAND_DARK} !important;
     }}
 </style>
 """, unsafe_allow_html=True)
@@ -202,17 +213,17 @@ def render_gauge(score):
     fig = go.Figure(go.Indicator(
         mode="gauge+number",
         value=score if score is not None else 0,
-        number={"suffix": "%" if score is not None else "", "font": {"size": 40, "color": "#F4F6F5"}},
+        number={"suffix": "%" if score is not None else "", "font": {"size": 40, "color": COLOR_TEXT}},
         gauge={
             "axis": {"range": [0, 100], "visible": False},
             "bar": {"color": color, "thickness": 0.85},
-            "bgcolor": "#1C2A2E",
+            "bgcolor": "#E4E4E4",
             "borderwidth": 0,
         },
     ))
     fig.update_layout(
         height=220, margin=dict(l=10, r=10, t=10, b=10),
-        paper_bgcolor="rgba(0,0,0,0)", font={"color": "#F4F6F5"},
+        paper_bgcolor="rgba(0,0,0,0)", font={"color": COLOR_TEXT},
     )
     return fig
 
@@ -229,15 +240,15 @@ days, months = days_to_deadline()
 
 st.markdown(f"""
 <div style="text-align:center; padding: 10px 0 24px 0;">
-  <p style="color:#7FB8AC; font-weight:600; letter-spacing:1px; font-size:13px; text-transform:uppercase;">
+  <p style="color:{COLOR_BRAND}; font-weight:600; letter-spacing:1px; font-size:13px; text-transform:uppercase;">
     🛡️ RetailPulse LATAM
   </p>
-  <h1 style="color:#F4F6F5; font-size:32px; margin-bottom:6px;">
-    Escáner de Privacidad y Tracking Técnico<br/><span style="color:#7FB8AC;">Ley 21.719</span>
+  <h1 style="color:{COLOR_TEXT}; font-size:32px; margin-bottom:6px;">
+    Escáner de Privacidad y Tracking Técnico<br/><span style="color:{COLOR_BRAND};">Ley 21.719</span>
   </h1>
-  <p style="color:#A8BDB8; font-size:14.5px; max-width:480px; margin:0 auto;">
+  <p style="color:{COLOR_MUTED}; font-size:14.5px; max-width:480px; margin:0 auto;">
     Análisis técnico real sobre el HTML público de tu sitio. Evita multas de hasta
-    <span style="color:#E0A05B; font-weight:600;">20.000 UTM</span>.
+    <span style="color:{COLOR_BRAND}; font-weight:600;">20.000 UTM</span>.
     Quedan {months} meses para la fiscalización (1 dic. 2026).
   </p>
 </div>
@@ -285,11 +296,11 @@ if data:
         st.plotly_chart(render_gauge(score), use_container_width=True, config={"displayModeBar": False})
     with tcol:
         st.markdown(f"""
-        <p style="color:#E28168; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:1px;">🛡️ Cumplimiento Técnico</p>
-        <h3 style="color:#F4F6F5; margin:2px 0 6px 0;">{f"{score}% de Cumplimiento Técnico" if score is not None else "Datos insuficientes"}</h3>
-        <p style="color:#A8BDB8; font-size:13.5px; margin-bottom:2px;">Plataforma detectada: <b>{platform_label}</b>
-          {f'<span style="color:#7FA69E;">(confianza {platform["confidence"]})</span>' if platform["confidence"] else ''}</p>
-        <p style="color:#8FA6A1; font-size:12.5px;">El puntaje solo considera controles con evidencia suficiente.</p>
+        <p style="color:{COLOR_BRAND}; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:1px;">🛡️ Cumplimiento Técnico</p>
+        <h3 style="color:{COLOR_TEXT}; margin:2px 0 6px 0;">{f"{score}% de Cumplimiento Técnico" if score is not None else "Datos insuficientes"}</h3>
+        <p style="color:{COLOR_TEXT}; font-size:13.5px; margin-bottom:2px;">Plataforma detectada: <b>{platform_label}</b>
+          {f'<span style="color:{COLOR_MUTED};">(confianza {platform["confidence"]})</span>' if platform["confidence"] else ''}</p>
+        <p style="color:{COLOR_MUTED}; font-size:12.5px;">El puntaje solo considera controles con evidencia suficiente.</p>
         """, unsafe_allow_html=True)
     m1, m2, m3, m4 = st.columns(4)
     m1.metric("Evaluados", summary["evaluados"])
@@ -321,10 +332,10 @@ if data:
             for item_id in item_ids:
                 r = data["results"][item_id]
                 st.markdown(f"""
-                <div style="padding:10px 0; border-bottom:1px solid #2A3A38;">
+                <div style="padding:10px 0; border-bottom:1px solid {COLOR_BORDER};">
                   <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:12px;">
                     <div>
-                      <p style="font-weight:600; margin:0; color:#101A1D;">{item_id} · {REQ_TEXT[item_id]}</p>
+                      <p style="font-weight:600; margin:0; color:{COLOR_TEXT};">{item_id} · {REQ_TEXT[item_id]}</p>
                       <p style="font-size:13px; color:#5B6B67; margin:6px 0 0 0;"><b>Evidencia:</b> {r['evidencia']}</p>
                       <p style="font-size:13px; color:#5B6B67; margin:4px 0 0 0;"><b>Recomendación:</b> {SOLUTIONS[item_id]}</p>
                     </div>
@@ -335,8 +346,8 @@ if data:
 
     st.markdown(f"""
     <div class="rp-cta">
-      <h3 style="color:#F4F6F5; margin-top:0;">Estructura tu Plan de Remediación Técnica con un Consultor Especialista</h3>
-      <p style="color:#CFE3DE; font-size:13.5px;">
+      <h3 style="color:#FFFFFF; margin-top:0;">Estructura tu Plan de Remediación Técnica con un Consultor Especialista</h3>
+      <p style="color:#F3DADE; font-size:13.5px;">
         Este reporte identificó brechas y puntos que requieren revisión frente a la Ley 21.719 en {platform_label}.
         Podemos ayudarte a adecuar tu tienda y reconfigurar tus etiquetas de tracking sin perder ventas.
       </p>
@@ -345,7 +356,7 @@ if data:
     st.link_button("📅 Agendar Auditoría de Validación (15 min)", CALENDLY_URL, use_container_width=True, type="primary")
 
 st.markdown(
-    '<p style="text-align:center; color:#5B7A78; font-size:11.5px; margin-top:24px;">'
+    f'<p style="text-align:center; color:{COLOR_MUTED}; font-size:11.5px; margin-top:24px;">'
     'Análisis estático sobre el HTML público · No requiere acceso a tu backend</p>',
     unsafe_allow_html=True,
 )

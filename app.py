@@ -96,10 +96,15 @@ PRIORIDAD = {
 st.markdown(f"""
 <style>
     .stApp {{ background-color: {COLOR_BG}; }}
-    h1, h2, h3, h4, h5, h6 {{ font-family: Georgia, 'Times New Roman', serif; color: {COLOR_TEXT} !important; }}
+    h1, h2, h3, h4, h5, h6 {{ font-family: Georgia, 'Times New Roman', serif; color: {COLOR_TEXT}; }}
     .stApp p, .stApp li, .stApp label, .stApp span {{ color: {COLOR_TEXT}; }}
-    /* Expanders: Streamlit renders these as native <details>/<summary> */
-    .stApp details summary {{ color: {COLOR_TEXT} !important; }}
+    /* Expanders: Streamlit renders these as native <details>/<summary>.
+       Force both background AND text so the 'open' state (which Streamlit
+       darkens by default) never loses contrast. */
+    .stApp details summary {{
+        background-color: {COLOR_CARD} !important;
+        color: {COLOR_TEXT} !important;
+    }}
     .stApp details summary p, .stApp details summary span, .stApp details summary div {{
         color: {COLOR_TEXT} !important;
     }}
@@ -108,6 +113,9 @@ st.markdown(f"""
     /* st.metric label/value */
     [data-testid="stMetricLabel"] p {{ color: {COLOR_MUTED} !important; }}
     [data-testid="stMetricValue"] {{ color: {COLOR_TEXT} !important; }}
+    /* Black CTA button: force white text unconditionally, scoped only to
+       this button so it never fights the global dark-text rule above. */
+    .stLinkButton, .stLinkButton * {{ color: #FFFFFF !important; }}
     .badge {{
         display: inline-flex; align-items: center; gap: 6px;
         font-size: 12px; font-weight: 600; padding: 4px 10px;

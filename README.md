@@ -23,6 +23,24 @@ streamlit run app.py
 4. Deploy. Cada `git push` a la rama configurada redespliega automáticamente
    — es el mismo flujo que usas para tus otras apps Streamlit.
 
+## Si aparece "Error installing requirements"
+
+La causa más común es que Streamlit Cloud asigna una versión de Python
+distinta a la que las versiones fijas de `requirements.txt` soportan, y pip
+falla al compilar dependencias sin wheel precompilado para esa versión.
+Solución aplicada en este proyecto:
+
+- `requirements.txt` usa versiones mínimas (`>=`) en vez de versiones
+  exactas, para que pip elija automáticamente builds compatibles.
+- `runtime.txt` fija Python a la 3.11 (amplia disponibilidad de wheels para
+  streamlit, plotly, beautifulsoup4 y requests).
+
+Si el error persiste después de subir estos dos archivos, entra a
+"Manage app" → terminal, copia el nombre exacto del paquete que falla, y
+revisa si tiene una dependencia de sistema (poco común en este proyecto,
+ya que no usamos librerías con compilación pesada como pandas/numpy con
+extensiones nativas más allá de lo que streamlit ya trae).
+
 ## Antes de publicar
 
 - Reemplaza `CALENDLY_URL` en `app.py` por tu link real de agendamiento.

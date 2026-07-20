@@ -378,7 +378,7 @@ days, months = days_to_deadline()
 st.markdown(f"""
 <div style="text-align:center; padding: 10px 0 24px 0;">
   <p style="color:{COLOR_BRAND}; font-weight:600; letter-spacing:1px; font-size:13px; text-transform:uppercase;">
-    <img src="https://retailpulse.cl/assets/img/logo-retailpulse.png" width="40%">
+    <img src="https://retailpulse.cl/assets/img/logo-retailpulse.png" width="30%">
   </p>
   <h1 style="color:{COLOR_TEXT}; font-size:32px; margin-bottom:6px;">
     Escáner de Privacidad y Tracking Técnico<br/><span style="color:{COLOR_BRAND};">Ley 21.719</span>
@@ -564,6 +564,6 @@ if data:
 
 st.markdown(
     f'<p style="text-align:center; color:{COLOR_MUTED}; font-size:11.5px; margin-top:24px;">'
-    'Análisis estático sobre el HTML público · No requiere acceso a tu backend · RetailPulse es una marca y metodología propietaria · Copyright © 2026 | AOvalle.com | Todos los Derechos Reservados </p>',
+    'Análisis estático sobre el HTML público · No requiere acceso a tu backend · RetailPulse es una marca y metodología propietaria · Copyright © 2026</p>',
     unsafe_allow_html=True,
 )

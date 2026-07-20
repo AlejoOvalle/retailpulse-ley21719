@@ -266,7 +266,7 @@ st.markdown(f"""
     <img src="https://retailpulse.cl/assets/img/logo-retailpulse.png" width="30%">
   </p>
   <h1 style="color:{COLOR_TEXT}; font-size:32px; margin-bottom:6px;">
-    Escáner de Privacidad y Tracking Técnico<br/><span style="color:{COLOR_BRAND};">Ley 21.719</span>
+    Escáner de privacidad y tracking técnico<br/><span style="color:{COLOR_BRAND};">Ley 21.719</span>
   </h1>
   <p style="color:{COLOR_MUTED}; font-size:14.5px; max-width:480px; margin:0 auto;">
     Análisis técnico real sobre el HTML público de tu sitio. Evita multas de hasta

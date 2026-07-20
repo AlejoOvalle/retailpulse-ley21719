@@ -564,6 +564,6 @@ if data:
 
 st.markdown(
     f'<p style="text-align:center; color:{COLOR_MUTED}; font-size:11.5px; margin-top:24px;">'
-    'Análisis estático sobre el HTML público · No requiere acceso a tu backend</p><p>Copyright © 2026 | AOvalle.com | Todos los Derechos Reservados</p><p>RetailPulse Index es una marca y metodología propietaria.</p>',
+    'Análisis estático sobre el HTML público · No requiere acceso a tu backend - Copyright © 2026 | AOvalle.com | Todos los Derechos Reservados - RetailPulse Index es una marca y metodología propietaria.</p>',
     unsafe_allow_html=True,
 )

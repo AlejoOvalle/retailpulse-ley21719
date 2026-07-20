@@ -365,7 +365,7 @@ def render_exposure_chart(exposure):
     return fig
 
 
-
+def estado_badge(estado):
     s = ESTADO_STYLE[estado]
     return f'<span class="badge" style="background-color:{s["bg"]};color:{s["fg"]}">{s["icon"]} {estado}</span>'
 

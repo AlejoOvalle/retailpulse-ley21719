@@ -96,7 +96,18 @@ PRIORIDAD = {
 st.markdown(f"""
 <style>
     .stApp {{ background-color: {COLOR_BG}; }}
-    h1, h2, h3 {{ font-family: Georgia, 'Times New Roman', serif; color: {COLOR_TEXT}; }}
+    h1, h2, h3, h4, h5, h6 {{ font-family: Georgia, 'Times New Roman', serif; color: {COLOR_TEXT} !important; }}
+    .stApp p, .stApp li, .stApp label, .stApp span {{ color: {COLOR_TEXT}; }}
+    /* Expanders: Streamlit renders these as native <details>/<summary> */
+    .stApp details summary {{ color: {COLOR_TEXT} !important; }}
+    .stApp details summary p, .stApp details summary span, .stApp details summary div {{
+        color: {COLOR_TEXT} !important;
+    }}
+    .stApp details summary svg {{ fill: {COLOR_TEXT} !important; }}
+    .stApp details {{ background-color: {COLOR_CARD}; border: 1px solid {COLOR_BORDER}; border-radius: 10px; }}
+    /* st.metric label/value */
+    [data-testid="stMetricLabel"] p {{ color: {COLOR_MUTED} !important; }}
+    [data-testid="stMetricValue"] {{ color: {COLOR_TEXT} !important; }}
     .badge {{
         display: inline-flex; align-items: center; gap: 6px;
         font-size: 12px; font-weight: 600; padding: 4px 10px;

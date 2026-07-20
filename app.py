@@ -25,7 +25,7 @@ st.set_page_config(
 
 HEADERS = {"User-Agent": "Mozilla/5.0 (compatible; RetailPulseComplianceBot/1.0; +https://aovalle.com)"}
 TIMEOUT = 12
-CALENDLY_URL = "https://calendly.com/TU-USUARIO/auditoria-ley-21719"  # reemplaza con tu link real
+CALENDLY_URL = "https://calendly.com/alejandro-ovalle/30min"  # reemplaza con tu link real
 
 # Valor UTM julio 2026 (fuente: SII / Banco Central). Actualizar mensualmente
 # o reemplazar por una consulta en vivo si se requiere precisión permanente.
@@ -120,7 +120,7 @@ PRIORIDAD = {
 st.markdown(f"""
 <style>
     .stApp {{ background-color: {COLOR_BG}; }}
-    h1, h2, h3, h4, h5, h6 {{ font-family: Georgia, 'Times New Roman', serif; color: {COLOR_TEXT}; }}
+    h1, h2, h3, h4, h5, h6 {{ font-family: Roboto, 'Roboto', serif; color: {COLOR_TEXT}; }}
     .stApp p, .stApp li, .stApp label, .stApp span {{ color: {COLOR_TEXT}; }}
     /* Expanders: Streamlit renders these as native <details>/<summary>.
        Force both background AND text so the 'open' state (which Streamlit
@@ -378,7 +378,7 @@ days, months = days_to_deadline()
 st.markdown(f"""
 <div style="text-align:center; padding: 10px 0 24px 0;">
   <p style="color:{COLOR_BRAND}; font-weight:600; letter-spacing:1px; font-size:13px; text-transform:uppercase;">
-    🛡️ RetailPulse LATAM
+    <img src="https://retailpulse.cl/assets/img/logo-retailpulse.png" width="40%">
   </p>
   <h1 style="color:{COLOR_TEXT}; font-size:32px; margin-bottom:6px;">
     Escáner de Privacidad y Tracking Técnico<br/><span style="color:{COLOR_BRAND};">Ley 21.719</span>
@@ -564,6 +564,7 @@ if data:
 
 st.markdown(
     f'<p style="text-align:center; color:{COLOR_MUTED}; font-size:11.5px; margin-top:24px;">'
-    'Análisis estático sobre el HTML público · No requiere acceso a tu backend</p>',
+    'Análisis estático sobre el HTML público · No requiere acceso a tu backend<br>Copyright © 2026 | AOvalle.com | Todos los Derechos Reservados<br>
+RetailPulse Index es una marca y metodología propietaria.</p>',
     unsafe_allow_html=True,
 )

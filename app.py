@@ -121,10 +121,6 @@ st.markdown(f"""
         font-size: 12px; font-weight: 600; padding: 4px 10px;
         border-radius: 999px;
     }}
-    .rp-card {{
-        background-color: {COLOR_CARD}; border: 1px solid {COLOR_BORDER}; border-radius: 16px; padding: 24px;
-        color: {COLOR_TEXT}; margin-bottom: 16px;
-    }}
     .rp-urgency {{
         background-color: #F7ECDD; border: 1px solid #EBD5AE; border-radius: 12px;
         padding: 12px 18px; color: #7A5218; font-size: 13.5px; margin-bottom: 16px;
@@ -316,24 +312,23 @@ if data:
     platform = data["platform"]
     platform_label = platform["name"] or "tu plataforma actual"
 
-    st.markdown('<div class="rp-card">', unsafe_allow_html=True)
-    gcol, tcol = st.columns([1, 1.6])
-    with gcol:
-        st.plotly_chart(render_gauge(score), use_container_width=True, config={"displayModeBar": False})
-    with tcol:
-        st.markdown(f"""
-        <p style="color:{COLOR_BRAND}; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:1px;">🛡️ Cumplimiento Técnico</p>
-        <h3 style="color:{COLOR_TEXT}; margin:2px 0 6px 0;">{f"{score}% de Cumplimiento Técnico" if score is not None else "Datos insuficientes"}</h3>
-        <p style="color:{COLOR_TEXT}; font-size:13.5px; margin-bottom:2px;">Plataforma detectada: <b>{platform_label}</b>
-          {f'<span style="color:{COLOR_MUTED};">(confianza {platform["confidence"]})</span>' if platform["confidence"] else ''}</p>
-        <p style="color:{COLOR_MUTED}; font-size:12.5px;">El puntaje solo considera controles con evidencia suficiente.</p>
-        """, unsafe_allow_html=True)
-    m1, m2, m3, m4 = st.columns(4)
-    m1.metric("Evaluados", summary["evaluados"])
-    m2.metric("Reprobados", summary["reprobados"])
-    m3.metric("Prioridad alta", summary["prioridades_altas"])
-    m4.metric("No verificables", summary["no_verificables"])
-    st.markdown('</div>', unsafe_allow_html=True)
+    with st.container(border=True):
+        gcol, tcol = st.columns([1, 1.6])
+        with gcol:
+            st.plotly_chart(render_gauge(score), use_container_width=True, config={"displayModeBar": False})
+        with tcol:
+            st.markdown(f"""
+            <p style="color:{COLOR_BRAND}; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:1px;">🛡️ Cumplimiento Técnico</p>
+            <h3 style="color:{COLOR_TEXT}; margin:2px 0 6px 0;">{f"{score}% de Cumplimiento Técnico" if score is not None else "Datos insuficientes"}</h3>
+            <p style="color:{COLOR_TEXT}; font-size:13.5px; margin-bottom:2px;">Plataforma detectada: <b>{platform_label}</b>
+              {f'<span style="color:{COLOR_MUTED};">(confianza {platform["confidence"]})</span>' if platform["confidence"] else ''}</p>
+            <p style="color:{COLOR_MUTED}; font-size:12.5px;">El puntaje solo considera controles con evidencia suficiente.</p>
+            """, unsafe_allow_html=True)
+        m1, m2, m3, m4 = st.columns(4)
+        m1.metric("Evaluados", summary["evaluados"])
+        m2.metric("Reprobados", summary["reprobados"])
+        m3.metric("Prioridad alta", summary["prioridades_altas"])
+        m4.metric("No verificables", summary["no_verificables"])
 
     st.markdown(f"""
     <div class="rp-urgency">

@@ -96,7 +96,7 @@ PRIORIDAD = {
 st.markdown(f"""
 <style>
     .stApp {{ background-color: {COLOR_BG}; }}
-    h1, h2, h3, h4, h5, h6 {{ font-family: Georgia, 'Times New Roman', serif; color: {COLOR_TEXT}; }}
+    h1, h2, h3, h4, h5, h6 {{ font-family: Roboto, 'Roboto', serif; color: {COLOR_TEXT}; }}
     .stApp p, .stApp li, .stApp label, .stApp span {{ color: {COLOR_TEXT}; }}
     /* Expanders: Streamlit renders these as native <details>/<summary>.
        Force both background AND text so the 'open' state (which Streamlit
@@ -263,7 +263,7 @@ days, months = days_to_deadline()
 st.markdown(f"""
 <div style="text-align:center; padding: 10px 0 24px 0;">
   <p style="color:{COLOR_BRAND}; font-weight:600; letter-spacing:1px; font-size:13px; text-transform:uppercase;">
-    🛡️ RetailPulse LATAM
+    <img src="https://retailpulse.cl/assets/img/logo-retailpulse.png" width="50%">
   </p>
   <h1 style="color:{COLOR_TEXT}; font-size:32px; margin-bottom:6px;">
     Escáner de Privacidad y Tracking Técnico<br/><span style="color:{COLOR_BRAND};">Ley 21.719</span>

@@ -118,12 +118,19 @@ st.markdown(f"""
         background-color: {COLOR_BRAND}; border-radius: 16px; padding: 26px;
         color: #FFFFFF;
     }}
-    div.stButton > button[kind="primary"], .stLinkButton > a {{
+    div.stButton > button[kind="primary"] {{
         background-color: {COLOR_BRAND} !important; border-color: {COLOR_BRAND} !important;
     }}
-    div.stButton > button[kind="primary"]:hover, .stLinkButton > a:hover {{
+    div.stButton > button[kind="primary"]:hover {{
         background-color: {COLOR_BRAND_DARK} !important; border-color: {COLOR_BRAND_DARK} !important;
     }}
+    .stLinkButton > a {{
+        background-color: #000000 !important; border-color: #000000 !important; color: #FFFFFF !important;
+    }}
+    .stLinkButton > a:hover {{
+        background-color: #2A2A2A !important; border-color: #2A2A2A !important;
+    }}
+    .rp-cta-spacer {{ height: 18px; }}
 </style>
 """, unsafe_allow_html=True)
 
@@ -353,6 +360,7 @@ if data:
       </p>
     </div>
     """, unsafe_allow_html=True)
+    st.markdown('<div class="rp-cta-spacer"></div>', unsafe_allow_html=True)
     st.link_button("📅 Agendar Auditoría de Validación (15 min)", CALENDLY_URL, use_container_width=True, type="primary")
 
 st.markdown(

@@ -560,7 +560,7 @@ if data:
     </div>
     """, unsafe_allow_html=True)
     st.markdown('<div class="rp-cta-spacer"></div>', unsafe_allow_html=True)
-    st.link_button("📅 Agendar Auditoría de Validación (15 min)", CALENDLY_URL, use_container_width=True, type="primary")
+    st.link_button("📅  Agendar Auditoría de Validación (15 min)", CALENDLY_URL, use_container_width=True, type="primary")
 
 st.markdown(
     f'<p style="text-align:center; color:{COLOR_MUTED}; font-size:11.5px; margin-top:24px;">'

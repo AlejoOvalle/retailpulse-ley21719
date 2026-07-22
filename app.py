@@ -552,7 +552,7 @@ if data:
 
     st.markdown(f"""
     <div class="rp-cta">
-      <h3 style="color:#FFFFFF; margin-top:0;">Estructura tu Plan de Remediación Técnica con un Consultor Especialista</h3>
+      <h3 style="color:#FFFFFF; margin-top:0;">Estructura tu Plan de Remediación Técnica con Alejandro Ovalle, Consultor Especialista</h3>
       <p style="color:#F3DADE; font-size:13.5px;">
         Este reporte identificó brechas y puntos que requieren revisión frente a la Ley 21.719 en {platform_label}.
         Podemos ayudarte a adecuar tu tienda y reconfigurar tus etiquetas de tracking sin perder ventas.
